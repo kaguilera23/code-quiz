@@ -32,6 +32,8 @@ To add a screenshot, create an `assets/images` folder in your repository and upl
 
 ## Credits
 
+<li><a href="https://www.youtube.com/watch?v=sqUFaKGaEyE">Connect multiple pages to one HTML</a></li>
+
 List your collaborators, if any, with links to their GitHub profiles.
 
 If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.

@@ -1,0 +1,14 @@
+header {
+        margin: 20px 120px 20px 50px;
+        font-family: sans-serif;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-decoration: none;
+        color:rgb(214, 41, 128);
+        font-size: 30px;
+}
+
+body{
+    color:rgb(214, 41, 128);
+}

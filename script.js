@@ -1,6 +1,6 @@
-var mainTitle = document.querySelector("p");
+var mainTitle = document.querySelector("h1");
 var instructions = document.getElementById("instructions");
-var startButton = document.getElementById("start-button");
+var buttonsSection = document.getElementById("buttons");
 
 var questions = [
     {
@@ -25,12 +25,34 @@ var questions = [
     }
 ]
 
-mainTitle.textContent = "Coding Quiz"
-instructions.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorret answers will penalize your score/time by 10 seconds!"
+// Main Page Content
+mainTitle.textContent = "Coding Quiz Challenge";
+instructions.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!"
+var startButton = document.createElement("button")
+startButton.textContent = "Start Quiz";
+buttonsSection.appendChild(startButton);
 
+// When the user starts the quiz
 startButton.addEventListener("click", startQuiz)
 
 function startQuiz () {
-    mainTitle.textContent = "";
+
     instructions.textContent = "";
+    startButton.setAttribute("style", "visibility:hidden");
+    
+    var buttonA = document.createElement("button");
+    var buttonB = document.createElement("button");
+    var buttonC = document.createElement("button");
+    var buttonD = document.createElement("button");
+
+    buttonA.textContent = questions[0].question;
+    buttonB.textContent = "This is";
+    buttonC.textContent = "A button";
+    buttonD.textContent = "Hopefully";
+
+    buttonsSection.appendChild(buttonA);
+    buttonsSection.appendChild(buttonB)
+    buttonsSection.appendChild(buttonC)
+    buttonsSection.appendChild(buttonD)
+
 }

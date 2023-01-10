@@ -9,6 +9,9 @@ header {
         font-size: 30px;
 }
 
-body{
-    color:rgb(214, 41, 128);
+#buttons {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: space-evenly;
 }

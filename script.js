@@ -6,26 +6,27 @@ var questions = [
     {
         question: "Commonly used data types DO NOT include _______.",
         answer: ["Alerts", "Strings", "Booleans", "Numbers"],
-        correct: buttonA,
+        correct: "A",
     },
     {
         question: "The condition in an 'if / else' statement is enclosed with _______.",
         answer: ["Quotes", "Parenthesis", "Curly Brackets", "Square Brackets"],//"Parenthesis" Other answers: Quotes, Curly Brackets, Square Brackets,
-        correct: buttonB
+        correct: "B"
     },
     {
         question:"Arrays in JavaScript can be used to store _______.",
         answer: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],//"All of the above" Other answers: numbers and strings, other arrays, booleans
-        correct: buttonD
+        correct: "D"
     },
     {
         question:"String values must be enclosed within _______ when being assigned to variables.",
         answer: ["Quotes", "Commas", "Curly Brackets", "Parenthesis"],//"Quotes" Other answers: Commas, Curly Brackets, Parenthesis
-        correct: buttonA
+        correct: "A"
     },
     {
         question:"A very useful tool used during development and debuggin for printing content to the debugger is _______.", 
-        answer: ["JavaScript", "terminal/bash", "console.log", "for loop"]//"console.log" Other answers: JavaScript, terminal/bash, for loops
+        answer: ["JavaScript", "terminal/bash", "console.log", "for loop"],//"console.log" Other answers: JavaScript, terminal/bash, for loops
+        correct: "C"
     }
 ]
 

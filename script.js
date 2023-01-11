@@ -6,27 +6,27 @@ var questions = [
     {
         question: "Commonly used data types DO NOT include _______.",
         answer: ["Alerts", "Strings", "Booleans", "Numbers"],
-        correct: "A",
+        correct: "Alerts",
     },
     {
         question: "The condition in an 'if / else' statement is enclosed with _______.",
         answer: ["Quotes", "Parenthesis", "Curly Brackets", "Square Brackets"],//"Parenthesis" Other answers: Quotes, Curly Brackets, Square Brackets,
-        correct: "B"
+        correct: "Parenthesis"
     },
     {
         question:"Arrays in JavaScript can be used to store _______.",
         answer: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],//"All of the above" Other answers: numbers and strings, other arrays, booleans
-        correct: "D"
+        correct: "All of the above"
     },
     {
         question:"String values must be enclosed within _______ when being assigned to variables.",
         answer: ["Quotes", "Commas", "Curly Brackets", "Parenthesis"],//"Quotes" Other answers: Commas, Curly Brackets, Parenthesis
-        correct: "A"
+        correct: "Quotes"
     },
     {
         question:"A very useful tool used during development and debuggin for printing content to the debugger is _______.", 
         answer: ["JavaScript", "terminal/bash", "console.log", "for loop"],//"console.log" Other answers: JavaScript, terminal/bash, for loops
-        correct: "C"
+        correct: "console.log"
     }
 ]
 
@@ -52,17 +52,22 @@ function startQuiz () {
     var buttonC = document.createElement("button");
     var buttonD = document.createElement("button");
 
+    buttonA.setAttribute("id", "button-a");
+    buttonB.setAttribute("id", "button-b");
+    buttonC.setAttribute("id", "button-c");
+    buttonD.setAttribute("id", "button-d");
 
-    // Write a for loop when I know what's happening
+
+    buttonsSection.appendChild(buttonA);
+    buttonsSection.appendChild(buttonB);
+    buttonsSection.appendChild(buttonC);
+    buttonsSection.appendChild(buttonD);
 
     buttonA.textContent = questions[0].answer[0];
     buttonB.textContent = questions[0].answer[1];
     buttonC.textContent = questions[0].answer[2];
     buttonD.textContent = questions[0].answer[3];
 
-    buttonsSection.appendChild(buttonA);
-    buttonsSection.appendChild(buttonB)
-    buttonsSection.appendChild(buttonC)
-    buttonsSection.appendChild(buttonD)
+
 
 }

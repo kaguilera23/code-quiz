@@ -2,34 +2,13 @@ var mainTitle = document.querySelector("h1");
 var instructions = document.getElementById("instructions");
 var startButtonSection = document.getElementById("start-button");
 var mcButtonsSection = document.getElementById("choice-buttons");
+// var choiceA = document.getElementById("button-a");
+// var choiceB = document.getElementById("button-b");
+// var choiceC = document.getElementById("button-c");
+// var choiceD = document.getElementById("button-d");
 
-var questions = [
-    {
-        question: "Commonly used data types DO NOT include _______.",
-        answers: ["Alerts", "Strings", "Booleans", "Numbers"],
-        correct: "Alerts",
-    },
-    {
-        question: "The condition in an 'if / else' statement is enclosed with _______.",
-        answers: ["Quotes", "Parenthesis", "Curly Brackets", "Square Brackets"],//"Parenthesis" Other answers: Quotes, Curly Brackets, Square Brackets,
-        correct: "Parenthesis"
-    },
-    {
-        question:"Arrays in JavaScript can be used to store _______.",
-        answers: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],//"All of the above" Other answers: numbers and strings, other arrays, booleans
-        correct: "All of the above"
-    },
-    {
-        question:"String values must be enclosed within _______ when being assigned to variables.",
-        answers: ["Quotes", "Commas", "Curly Brackets", "Parenthesis"],//"Quotes" Other answers: Commas, Curly Brackets, Parenthesis
-        correct: "Quotes"
-    },
-    {
-        question:"A very useful tool used during development and debuggin for printing content to the debugger is _______.", 
-        answers: ["JavaScript", "terminal/bash", "console.log", "for loop"],//"console.log" Other answers: JavaScript, terminal/bash, for loops
-        correct: "console.log"
-    }
-]
+
+
 
 // Main Page Content
 mainTitle.textContent = "Coding Quiz Challenge";
@@ -39,15 +18,14 @@ startButton.textContent = "Start Quiz";
 startButtonSection.appendChild(startButton);
 
 // When the user starts the quiz
-startButtonSection.addEventListener("click", startQuiz)
-
+startButtonSection.addEventListener("click", startQuiz, false)
 
 function startQuiz () {
-    
+        
     // Get rid of title and instruction
 
     instructions.textContent = "";
-    startButton.setAttribute("style", "visibility:hidden");
+    startButton.remove();
 
     // Create multiple choice buttons    
     
@@ -60,55 +38,152 @@ function startQuiz () {
     buttonB.setAttribute("id", "button-b");
     buttonC.setAttribute("id", "button-c");
     buttonD.setAttribute("id", "button-d");
+    
 
     mcButtonsSection.appendChild(buttonA);
     mcButtonsSection.appendChild(buttonB);
     mcButtonsSection.appendChild(buttonC);
     mcButtonsSection.appendChild(buttonD);
 
-    // Asking Question 1
-    function questionOne() {
-         mainTitle.textContent = questions[0].question;
-
-            buttonA.textContent = questions[0].answers[0];
-            buttonB.textContent = questions[0].answers[1];
-            buttonC.textContent = questions[0].answers[2];
-            buttonD.textContent = questions[0].answers[3];
-
-    // Event Listener for button choices
-     mcButtonsSection.addEventListener("click", userResponse, true);
-    
-    function userResponse(event) {
-        if (event.target === buttonA) {
-            console.log("Button A");
-            return true;
-        } else if (event.target === buttonB) {
-            console.log("Button B");
-            return false;
-        } else if (event.target === buttonC) {
-            console.log("Button C");
-            return false;
-        } else if (event.target === buttonD) {
-            console.log("Button D");
-            return false;
+    var questions = [
+        {
+            question: "Commonly used data types DO NOT include _______.",
+            answers: ["Alerts", "Strings", "Booleans", "Numbers"],
+            correct: buttonA
+        },
+        {
+            question: "The condition in an 'if / else' statement is enclosed with _______.",
+            answers: ["Quotes", "Parenthesis", "Curly Brackets", "Square Brackets"],//"Parenthesis" Other answers: Quotes, Curly Brackets, Square Brackets,
+            correct: buttonB,
+        },
+        {
+            question:"Arrays in JavaScript can be used to store _______.",
+            answers: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],//"All of the above" Other answers: numbers and strings, other arrays, booleans
+            correct: buttonD,
+        },
+        {
+            question:"String values must be enclosed within _______ when being assigned to variables.",
+            answers: ["Quotes", "Commas", "Curly Brackets", "Parenthesis"],//"Quotes" Other answers: Commas, Curly Brackets, Parenthesis
+            correct: buttonA,
+        },
+        {
+            question:"A very useful tool used during development and debuggin for printing content to the debugger is _______.", 
+            answers: ["JavaScript", "terminal/bash", "console.log", "for loop"],//"console.log" Other answers: JavaScript, terminal/bash, for loops
+            correct: buttonC,
         }
+    ]
+   
+    function questionOne () {
+        mainTitle.textContent = questions[0].question;
 
-        
+        buttonA.textContent = questions[0].answers[0];
+        buttonB.textContent = questions[0].answers[1];
+        buttonC.textContent = questions[0].answers[2];
+        buttonD.textContent = questions[0].answers[3];
 
-    }       
+        mcButtonsSection.addEventListener("click", function hello (answer) {
+            answer.stopPropagation();
+            console.log(answer.target);
+            console.log(questions[0].correct)
+            console.log(buttonA);
+            if (answer.target === questions[0].correct) {
+                console.log("correct");
+            } else {
+                console.log("incorrect");
+            }
+    });
+    }
+  
+    function questionTwo () {
+        mainTitle.textContent = questions[1].question;
+
+        buttonA.textContent = questions[1].answers[0];
+        buttonB.textContent = questions[1].answers[1];
+        buttonC.textContent = questions[1].answers[2];
+        buttonD.textContent = questions[1].answers[3];
+
+        mcButtonsSection.addEventListener("click", function hello (answer) {
+            answer.stopPropagation();
+            console.log(answer.target);
+            console.log(questions[1].correct)
+            console.log(buttonA);
+            if (answer.target === questions[1].correct) {
+                console.log("correct");
+            } else {
+                console.log("incorrect");
+            }
+    });
+    }
+
+    function questionThree () {
+        mainTitle.textContent = questions[2].question;
+
+        buttonA.textContent = questions[2].answers[0];
+        buttonB.textContent = questions[2].answers[1];
+        buttonC.textContent = questions[2].answers[2];
+        buttonD.textContent = questions[2].answers[3];
+
+        mcButtonsSection.addEventListener("click", function hello (answer) {
+            answer.stopPropagation();
+            console.log(answer.target);
+            console.log(questions[2].correct)
+            console.log(buttonA);
+            if (answer.target === questions[2].correct) {
+                console.log("correct");
+            } else {
+                console.log("incorrect");
+            }
+    });
+
+    };
+
+    function questionFour () {
+        mainTitle.textContent = questions[3].question;
+
+        buttonA.textContent = questions[3].answers[0];
+        buttonB.textContent = questions[3].answers[1];
+        buttonC.textContent = questions[3].answers[2];
+        buttonD.textContent = questions[3].answers[3];
+
+        mcButtonsSection.addEventListener("click", function hello (answer) {
+            answer.stopPropagation();
+            console.log(answer.target);
+            console.log(questions[3].correct)
+            console.log(buttonA);
+            if (answer.target === questions[3].correct) {
+                console.log("correct");
+            } else {
+                console.log("incorrect");
+            }
+    });
+
+    };
+
+    function questionFive () {
+        mainTitle.textContent = questions[4].question;
+
+        buttonA.textContent = questions[4].answers[0];
+        buttonB.textContent = questions[4].answers[1];
+        buttonC.textContent = questions[4].answers[2];
+        buttonD.textContent = questions[4].answers[3];
+
+        mcButtonsSection.addEventListener("click", function hello (answer) {
+            answer.stopPropagation();
+            console.log(answer.target);
+            console.log(questions[4].correct)
+            console.log(buttonA);
+            if (answer.target === questions[4].correct) {
+                console.log("correct");
+            } else {
+                console.log("incorrect");
+            }
+    });
     };
 
     questionOne();
+    questionTwo();
+    questionThree();
+    questionFour();
+    questionFive();
 
-    // Questions 2
-
-    function questionFour() {
-        mainTitle.textContent = questions[1].question;
-
-           buttonA.textContent = questions[1].answers[0];
-           buttonB.textContent = questions[1].answers[1];
-           buttonC.textContent = questions[1].answers[2];
-           buttonD.textContent = questions[1].answers[3];
-
-}
 }

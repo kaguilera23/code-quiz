@@ -1,6 +1,7 @@
 var mainTitle = document.querySelector("h1");
 var instructions = document.getElementById("instructions");
-var buttonsSection = document.getElementById("buttons");
+var startButtonSection = document.getElementById("start-button");
+var mcButtonsSection = document.getElementById("choice-buttons");
 
 var questions = [
     {
@@ -35,17 +36,20 @@ mainTitle.textContent = "Coding Quiz Challenge";
 instructions.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!"
 var startButton = document.createElement("button")
 startButton.textContent = "Start Quiz";
-buttonsSection.appendChild(startButton);
+startButtonSection.appendChild(startButton);
 
 // When the user starts the quiz
-startButton.addEventListener("click", startQuiz)
+startButtonSection.addEventListener("click", startQuiz)
+
 
 function startQuiz () {
+    
+    // Get rid of title and instruction
 
     instructions.textContent = "";
     startButton.setAttribute("style", "visibility:hidden");
 
-    mainTitle.textContent = questions[0].question;
+    // Create multiple choice buttons    
     
     var buttonA = document.createElement("button");
     var buttonB = document.createElement("button");
@@ -57,17 +61,63 @@ function startQuiz () {
     buttonC.setAttribute("id", "button-c");
     buttonD.setAttribute("id", "button-d");
 
+    mcButtonsSection.appendChild(buttonA);
+    mcButtonsSection.appendChild(buttonB);
+    mcButtonsSection.appendChild(buttonC);
+    mcButtonsSection.appendChild(buttonD);
 
-    buttonsSection.appendChild(buttonA);
-    buttonsSection.appendChild(buttonB);
-    buttonsSection.appendChild(buttonC);
-    buttonsSection.appendChild(buttonD);
+    // Asking Question 1
+    function questionOne() {
+         mainTitle.textContent = questions[0].question;
 
-    buttonA.textContent = questions[0].answer[0];
-    buttonB.textContent = questions[0].answer[1];
-    buttonC.textContent = questions[0].answer[2];
-    buttonD.textContent = questions[0].answer[3];
+            buttonA.textContent = questions[0].answer[0];
+            buttonB.textContent = questions[0].answer[1];
+            buttonC.textContent = questions[0].answer[2];
+            buttonD.textContent = questions[0].answer[3];
 
+    // Event Listener for button choices
+     mcButtonsSection.addEventListener("click", userResponse);
+    
+    function userResponse(event) {
+        
+        if (event.target === buttonA) {
+            console.log("Button A");
+            return true;
+        } else if (event.target === buttonB) {
+            console.log("Button B");
+            return false;
+        } else if (event.target === buttonC) {
+            console.log("Button C");
+            return false;
+        } else if (event.target === buttonD) {
+            console.log("Button D");
+            return false;
+        }
 
+        event.stopPropagation();
 
+    }   
+
+    // Check for the right answer
+    if (userResponse === null) {
+        console.log("Correct");
+    } else {
+        console.log("incorrect");
+    }
+            
+    };
+
+    questionOne();
+
+    // Questions 2
+
+    function questionFour() {
+        mainTitle.textContent = questions[1].question;
+
+           buttonA.textContent = questions[1].answer[0];
+           buttonB.textContent = questions[1].answer[1];
+           buttonC.textContent = questions[1].answer[2];
+           buttonD.textContent = questions[1].answer[3];
+
+}
 }

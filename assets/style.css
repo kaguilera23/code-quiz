@@ -9,7 +9,7 @@ header {
         font-size: 30px;
 }
 
-#buttons {
+#choice-buttons {
     display: flex;
     flex-direction: column;
     width: fit-content;

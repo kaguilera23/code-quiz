@@ -6,27 +6,27 @@ var mcButtonsSection = document.getElementById("choice-buttons");
 var questions = [
     {
         question: "Commonly used data types DO NOT include _______.",
-        answer: ["Alerts", "Strings", "Booleans", "Numbers"],
+        answers: ["Alerts", "Strings", "Booleans", "Numbers"],
         correct: "Alerts",
     },
     {
         question: "The condition in an 'if / else' statement is enclosed with _______.",
-        answer: ["Quotes", "Parenthesis", "Curly Brackets", "Square Brackets"],//"Parenthesis" Other answers: Quotes, Curly Brackets, Square Brackets,
+        answers: ["Quotes", "Parenthesis", "Curly Brackets", "Square Brackets"],//"Parenthesis" Other answers: Quotes, Curly Brackets, Square Brackets,
         correct: "Parenthesis"
     },
     {
         question:"Arrays in JavaScript can be used to store _______.",
-        answer: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],//"All of the above" Other answers: numbers and strings, other arrays, booleans
+        answers: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the above"],//"All of the above" Other answers: numbers and strings, other arrays, booleans
         correct: "All of the above"
     },
     {
         question:"String values must be enclosed within _______ when being assigned to variables.",
-        answer: ["Quotes", "Commas", "Curly Brackets", "Parenthesis"],//"Quotes" Other answers: Commas, Curly Brackets, Parenthesis
+        answers: ["Quotes", "Commas", "Curly Brackets", "Parenthesis"],//"Quotes" Other answers: Commas, Curly Brackets, Parenthesis
         correct: "Quotes"
     },
     {
         question:"A very useful tool used during development and debuggin for printing content to the debugger is _______.", 
-        answer: ["JavaScript", "terminal/bash", "console.log", "for loop"],//"console.log" Other answers: JavaScript, terminal/bash, for loops
+        answers: ["JavaScript", "terminal/bash", "console.log", "for loop"],//"console.log" Other answers: JavaScript, terminal/bash, for loops
         correct: "console.log"
     }
 ]
@@ -70,16 +70,15 @@ function startQuiz () {
     function questionOne() {
          mainTitle.textContent = questions[0].question;
 
-            buttonA.textContent = questions[0].answer[0];
-            buttonB.textContent = questions[0].answer[1];
-            buttonC.textContent = questions[0].answer[2];
-            buttonD.textContent = questions[0].answer[3];
+            buttonA.textContent = questions[0].answers[0];
+            buttonB.textContent = questions[0].answers[1];
+            buttonC.textContent = questions[0].answers[2];
+            buttonD.textContent = questions[0].answers[3];
 
     // Event Listener for button choices
-     mcButtonsSection.addEventListener("click", userResponse);
+     mcButtonsSection.addEventListener("click", userResponse, true);
     
     function userResponse(event) {
-        
         if (event.target === buttonA) {
             console.log("Button A");
             return true;
@@ -94,17 +93,9 @@ function startQuiz () {
             return false;
         }
 
-        event.stopPropagation();
+        
 
-    }   
-
-    // Check for the right answer
-    if (userResponse === null) {
-        console.log("Correct");
-    } else {
-        console.log("incorrect");
-    }
-            
+    }       
     };
 
     questionOne();
@@ -114,10 +105,10 @@ function startQuiz () {
     function questionFour() {
         mainTitle.textContent = questions[1].question;
 
-           buttonA.textContent = questions[1].answer[0];
-           buttonB.textContent = questions[1].answer[1];
-           buttonC.textContent = questions[1].answer[2];
-           buttonD.textContent = questions[1].answer[3];
+           buttonA.textContent = questions[1].answers[0];
+           buttonB.textContent = questions[1].answers[1];
+           buttonC.textContent = questions[1].answers[2];
+           buttonD.textContent = questions[1].answers[3];
 
 }
 }

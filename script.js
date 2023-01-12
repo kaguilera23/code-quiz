@@ -1,27 +1,25 @@
-var mainTitle = document.querySelector("h1");
+var mainTitle = document.querySelector("h2");
 var instructions = document.getElementById("instructions");
-var startButtonSection = document.getElementById("start-button");
-var mcButtonsSection = document.getElementById("choice-buttons");
+var startButtonSection = document.getElementById("start-section");
+var mcButtonsSection = document.getElementById("choice-section");
+var timeLeft = document.getElementById("time-left");
 // var choiceA = document.getElementById("button-a");
 // var choiceB = document.getElementById("button-b");
 // var choiceC = document.getElementById("button-c");
 // var choiceD = document.getElementById("button-d");
-
-
-
 
 // Main Page Content
 mainTitle.textContent = "Coding Quiz Challenge";
 instructions.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by 10 seconds!"
 var startButton = document.createElement("button")
 startButton.textContent = "Start Quiz";
+startButton.setAttribute("id", "start-button");
 startButtonSection.appendChild(startButton);
 
 // When the user starts the quiz
-startButtonSection.addEventListener("click", startQuiz, false)
+startButtonSection.addEventListener("click", startQuiz)
 
 function startQuiz () {
-        
     // Get rid of title and instruction
 
     instructions.textContent = "";
@@ -38,7 +36,11 @@ function startQuiz () {
     buttonB.setAttribute("id", "button-b");
     buttonC.setAttribute("id", "button-c");
     buttonD.setAttribute("id", "button-d");
-    
+
+    buttonA.className = "choice-buttons"
+    buttonB.className = "choice-buttons"
+    buttonC.className = "choice-buttons"
+    buttonD.className = "choice-buttons"
 
     mcButtonsSection.appendChild(buttonA);
     mcButtonsSection.appendChild(buttonB);
@@ -72,8 +74,17 @@ function startQuiz () {
             correct: buttonC,
         }
     ]
+
+    // function hello (answer) {
+    //                if (answer.target === questions[0].correct) {
+    //             console.log("correct");
+    //         } else {
+    //             console.log("incorrect");
+    //         }
+    //     };
+       
    
-    function questionOne () {
+    var questionOne = function () {
         mainTitle.textContent = questions[0].question;
 
         buttonA.textContent = questions[0].answers[0];
@@ -81,17 +92,7 @@ function startQuiz () {
         buttonC.textContent = questions[0].answers[2];
         buttonD.textContent = questions[0].answers[3];
 
-        mcButtonsSection.addEventListener("click", function hello (answer) {
-            answer.stopPropagation();
-            console.log(answer.target);
-            console.log(questions[0].correct)
-            console.log(buttonA);
-            if (answer.target === questions[0].correct) {
-                console.log("correct");
-            } else {
-                console.log("incorrect");
-            }
-    });
+        mcButtonsSection.addEventListener("click", function(){console.log("Hello")});
     }
   
     function questionTwo () {
@@ -102,17 +103,13 @@ function startQuiz () {
         buttonC.textContent = questions[1].answers[2];
         buttonD.textContent = questions[1].answers[3];
 
-        mcButtonsSection.addEventListener("click", function hello (answer) {
-            answer.stopPropagation();
-            console.log(answer.target);
-            console.log(questions[1].correct)
-            console.log(buttonA);
-            if (answer.target === questions[1].correct) {
-                console.log("correct");
-            } else {
-                console.log("incorrect");
-            }
-    });
+        // mcButtonsSection.addEventListener("click", function hello (answer) {
+        //     if (answer.target === questions[1].correct) {
+        //         console.log("correct");
+        //     } else {
+        //         console.log("incorrect");
+        //     }
+    // });
     }
 
     function questionThree () {
@@ -123,17 +120,13 @@ function startQuiz () {
         buttonC.textContent = questions[2].answers[2];
         buttonD.textContent = questions[2].answers[3];
 
-        mcButtonsSection.addEventListener("click", function hello (answer) {
-            answer.stopPropagation();
-            console.log(answer.target);
-            console.log(questions[2].correct)
-            console.log(buttonA);
-            if (answer.target === questions[2].correct) {
-                console.log("correct");
-            } else {
-                console.log("incorrect");
-            }
-    });
+    //     mcButtonsSection.addEventListener("click", function hello (answer) {
+    //         if (answer.target === questions[2].correct) {
+    //             console.log("correct");
+    //         } else {
+    //             console.log("incorrect");
+    //         }
+    // });
 
     };
 
@@ -145,17 +138,13 @@ function startQuiz () {
         buttonC.textContent = questions[3].answers[2];
         buttonD.textContent = questions[3].answers[3];
 
-        mcButtonsSection.addEventListener("click", function hello (answer) {
-            answer.stopPropagation();
-            console.log(answer.target);
-            console.log(questions[3].correct)
-            console.log(buttonA);
-            if (answer.target === questions[3].correct) {
-                console.log("correct");
-            } else {
-                console.log("incorrect");
-            }
-    });
+    //     mcButtonsSection.addEventListener("click", function hello (answer) {
+    //         if (answer.target === questions[3].correct) {
+    //             console.log("correct");
+    //         } else {
+    //             console.log("incorrect");
+    //         }
+    // });
 
     };
 
@@ -167,23 +156,17 @@ function startQuiz () {
         buttonC.textContent = questions[4].answers[2];
         buttonD.textContent = questions[4].answers[3];
 
-        mcButtonsSection.addEventListener("click", function hello (answer) {
-            answer.stopPropagation();
-            console.log(answer.target);
-            console.log(questions[4].correct)
-            console.log(buttonA);
-            if (answer.target === questions[4].correct) {
-                console.log("correct");
-            } else {
-                console.log("incorrect");
-            }
-    });
+    //     mcButtonsSection.addEventListener("click", function hello (answer) {
+    //         if (answer.target === questions[4].correct) {
+    //             console.log("correct");
+    //         } else {
+    //             console.log("incorrect");
+    //         }
+    // });
     };
-
-    questionOne();
-    questionTwo();
-    questionThree();
-    questionFour();
-    questionFive();
-
+console.log(questionOne);
+questionTwo;
+questionThree;
+questionFour;
+questionFive;
 }

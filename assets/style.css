@@ -1,17 +1,67 @@
+body {
+    font-family: sans-serif;
+}
+
 header {
         margin: 20px 120px 20px 50px;
-        font-family: sans-serif;
         display:flex;
         flex-direction: row;
         justify-content: space-between;
         text-decoration: none;
-        color:rgb(214, 41, 128);
+        color: rgb(214, 41, 128);
         font-size: 30px;
 }
 
-#choice-buttons {
+#start-button {
+    background-color: rgb(214, 41, 128);
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    font-size: 30px;
+    height: 70px;
+    width: 400px;
+}
+
+#start-button:hover {
+    cursor: grab;
+    border-style: dotted;
+    border-color: rgb(82, 238, 82);
+    border-width: 5px;
+}
+
+#choice-section {
     display: flex;
     flex-direction: column;
     width: fit-content;
     justify-content: space-evenly;
 }
+
+.choice-buttons {
+    background-color: rgb(214, 41, 128);
+    border-radius: 8px;
+    border-style: none;
+    color: white;
+    font-size: 30px;
+    margin: 10px;
+    width: 400px;
+    height: 100px;
+}
+
+.choice-buttons:hover {
+    cursor: grab;
+    border-style: dotted;
+    border-color: rgb(82, 238, 82);
+    border-width: 5px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 200px;
+    font-size: 25px;
+    text-align: center;
+}
+
+

@@ -64,4 +64,32 @@ main {
     text-align: center;
 }
 
+#input-section {
+    display: flex;
+    flex-direction: row;
 
+}
+
+#submit-button {
+    background-color: rgb(214, 41, 128);
+    border-radius: 5px;
+    border-style: none;
+    color: white;
+    font-size: 30px;
+    height: 60px;
+    
+}
+
+#enter-initials {
+    font-size: 50px;
+    margin-right: 10px; 
+   
+}
+
+#initials-here {
+    width: 400px;
+    height: 50px;
+    margin-right: 10px;
+    font-size: 40px;
+    
+}

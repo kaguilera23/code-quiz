@@ -76,17 +76,23 @@ function firstQuestion () {
         buttonC.textContent = questionOne.answers[2];
         buttonD.textContent = questionOne.answers[3];
 
-    mcButtonsSection.addEventListener("click", function(answer){
+    mcButtonsSection.addEventListener("click", checkAnswer);
+    
+    function checkAnswer(answer) {
+        answer.stopPropagation();
+        console.log(answer);
+        
         if(answer.target === questionOne.correct) {
             console.log("correct");
-            endScore();
+            // secondQuestion();
         } else {
             console.log("incorrect");
             timeLeft-= 10;
-            endScore();
+            // secondQuestion();
         }
-    });
-}
+    }
+        
+    }
 
 function secondQuestion() {
     var questionTwo = {
@@ -101,6 +107,20 @@ function secondQuestion() {
     buttonB.textContent = questionTwo.answers[1];
     buttonC.textContent = questionTwo.answers[2];
     buttonD.textContent = questionTwo.answers[3]; 
+
+    mcButtonsSection.addEventListener("click", checkAnswer);
+    
+    function checkAnswer(answer) {
+        answer.stopPropagation();
+        if(answer.target === questionTwo.correct) {
+            console.log("correct");
+            // thirdQuestion();
+        } else {
+            console.log("incorrect");
+            timeLeft-= 10;
+            // thirdQuestion();
+        }
+    }
 }
 
 function thirdQuestion() {
@@ -116,6 +136,20 @@ function thirdQuestion() {
     buttonB.textContent = questionThree.answers[1];
     buttonC.textContent = questionThree.answers[2];
     buttonD.textContent = questionThree.answers[3];   
+
+    mcButtonsSection.addEventListener("click", checkAnswer);
+    
+    function checkAnswer(answer) {
+        answer.stopPropagation();
+        if(answer.target === questionThree.correct) {
+            console.log("correct");
+            // fourthQuestion();
+        } else {
+            console.log("incorrect");
+            timeLeft-= 10;
+            // fourthQuestion();
+        }
+    }
 }
 
 function fourthQuestion() {
@@ -131,6 +165,20 @@ function fourthQuestion() {
     buttonB.textContent = questionFour.answers[1];
     buttonC.textContent = questionFour.answers[2];
     buttonD.textContent = questionFour.answers[3];   
+
+    mcButtonsSection.addEventListener("click", checkAnswer);
+    
+    function checkAnswer(answer) {
+        answer.stopPropagation();
+        if(answer.target === questionFour.correct) {
+            console.log("correct");
+            // fifthQuestion();
+        } else {
+            console.log("incorrect");
+            timeLeft-= 10;
+            // fifthQuestion();
+        }
+    }
 }
 
 function fifthQuestion() {
@@ -145,10 +193,22 @@ function fifthQuestion() {
     buttonA.textContent = questionFive.answers[0];
     buttonB.textContent = questionFive.answers[1];
     buttonC.textContent = questionFive.answers[2];
-    buttonD.textContent = questionFive.answers[3];   
+    buttonD.textContent = questionFive.answers[3]; 
+    
+    mcButtonsSection.addEventListener("click", checkAnswer);
+    
+    function checkAnswer(answer) {
+        answer.stopPropagation();
+        if(answer.target === questionFive.correct) {
+            console.log("correct");
+            endScore();
+        } else {
+            console.log("incorrect");
+            timeLeft-= 10;
+            endScore();
+        }
+    }
 }
-
-firstQuestion();
 
 function endScore() {
     
@@ -205,5 +265,5 @@ function endScore() {
    
     
 }
+}
 
-};

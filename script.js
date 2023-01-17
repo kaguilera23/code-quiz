@@ -63,6 +63,8 @@ timer();
     mcButtonsSection.appendChild(buttonC);
     mcButtonsSection.appendChild(buttonD);
 
+    firstQuestion();
+
 function firstQuestion () {
     var questionOne = {
         question: "Commonly used data types DO NOT include _______.",
@@ -79,16 +81,14 @@ function firstQuestion () {
     mcButtonsSection.addEventListener("click", checkAnswer);
     
     function checkAnswer(answer) {
-        answer.stopPropagation();
-        console.log(answer);
         
         if(answer.target === questionOne.correct) {
             console.log("correct");
-            // secondQuestion();
+            secondQuestion();
         } else {
             console.log("incorrect");
             timeLeft-= 10;
-            // secondQuestion();
+            secondQuestion();
         }
     }
         
@@ -114,11 +114,11 @@ function secondQuestion() {
         answer.stopPropagation();
         if(answer.target === questionTwo.correct) {
             console.log("correct");
-            // thirdQuestion();
+            thirdQuestion();
         } else {
             console.log("incorrect");
             timeLeft-= 10;
-            // thirdQuestion();
+            thirdQuestion();
         }
     }
 }
@@ -143,11 +143,11 @@ function thirdQuestion() {
         answer.stopPropagation();
         if(answer.target === questionThree.correct) {
             console.log("correct");
-            // fourthQuestion();
+            fourthQuestion();
         } else {
             console.log("incorrect");
             timeLeft-= 10;
-            // fourthQuestion();
+            fourthQuestion();
         }
     }
 }
@@ -172,11 +172,11 @@ function fourthQuestion() {
         answer.stopPropagation();
         if(answer.target === questionFour.correct) {
             console.log("correct");
-            // fifthQuestion();
+            fifthQuestion();
         } else {
             console.log("incorrect");
             timeLeft-= 10;
-            // fifthQuestion();
+            fifthQuestion();
         }
     }
 }
@@ -216,54 +216,73 @@ function endScore() {
     instructions.textContent = "Your final score is " + timeLeft;
     mcButtonsSection.remove();
 
-    var enterInitials = document.createElement("div");
-    var initialsSection = document.createElement("input");
+    var enterInitialsText = document.createElement("div");
+    var enterInitialsBox = document.createElement("input");
     var submitButton = document.createElement("button");
     submitButton.setAttribute("id", "submit-button");
-    enterInitials.setAttribute("id", "enter-initials");
-    initialsSection.setAttribute("id", "initials-here");
+    enterInitialsText.setAttribute("id", "enter-initials");
+    enterInitialsBox.setAttribute("id", "initials-here");
 
-    enterInitials.textContent = "Enter initials:";
+    enterInitialsText.textContent = "Enter initials:";
     submitButton.textContent = "Submit"
 
-    inputSection.appendChild(enterInitials);
-    inputSection.appendChild(initialsSection);
+    inputSection.appendChild(enterInitialsText);
+    inputSection.appendChild(enterInitialsBox);
     inputSection.appendChild(submitButton);
 
-    var names = [];
     
-    function storeData () {
-        localStorage.setItem("name", JSON.stringify(names));
-    };
-
-    inputSection.addEventListener("keydown", function(event){
-        console.log(event)
-
-        var namesText = initialsSection.value;
-
-        if (event.key == "Enter") {
-            names.push(namesText);
-            initialsSection.value = "";
-            console.log("clicked enter");
-            storeData(); 
+    
+    inputSection.addEventListener("keypress", clickSubmit);
+    inputSection.addEventListener("click", submitInitials);
+    
+    // If enter is pressed instead of submit being clicked, also acts as submit click
+    function clickSubmit(event) {
+        console.log(event.target);
+        if (event.key === "Enter") {
+            event.preventDefault();
+            console.log("enter");
+            submitButton.click();
         }
-    });
+    }
 
-    inputSection.addEventListener("click", function(event) {
-        console.log(event);
-
-        var namesText = initialsSection.value;
-
+    // what happens on submit click
+    function submitInitials (event) {
         if (event.target === submitButton) {
-            names.push(namesText);
-            initialsSection.value = "";
-            console.log("clicked");
+            console.log("submitted");
             storeData();
         }
-    });
+    }
+            
+    function storeData () {
+        var userInitials = enterInitialsBox.value;
+        var thanksSection = document.getElementById("thanks");
 
-   
-    
+        console.log(userInitials);
+
+        // if local storage is empty, save an empty array
+        if (localStorage.getItem("name") == null) {
+            localStorage.setItem("name", '[]');    
+        }
+
+        var previousNames = JSON.parse(localStorage.getItem("name"));
+        previousNames.push(userInitials);
+        
+        localStorage.setItem("name", JSON.stringify(previousNames));
+
+        thanksSection.textContent = "Thanks for playing " + userInitials + "! You will be redirected soon :)"
+
+        var wait = 5
+        
+        setInterval(function() {
+            wait--;
+
+            if (wait == 0) {
+                document.location.href = "./highscores.html"
+            }
+        }, 1000)
+
+    };
+        
 }
 }
 

@@ -93,3 +93,8 @@ main {
     font-size: 40px;
     
 }
+
+#thanks {
+    margin-top: 20px;
+    color: rgb(214, 41, 128);
+}

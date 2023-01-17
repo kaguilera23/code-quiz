@@ -1,26 +1,38 @@
 var goBack = document.getElementById("go-back");
 var highscores = document.getElementById("highscores");
 var buttonsSection = document.querySelector(".buttons");
+var clearButton = document.getElementById("clear");
 
-console.log(buttonsSection);
+// display scores in local storage currently
+getLocalStorage(); 
 
-var names = localStorage.getItem("name");
+function getLocalStorage() {
+    var names = JSON.parse(localStorage.getItem("name"));
 
-console.log(names);
+if (names == null) {
+    highscores.textContent = "No Highscorers Yet!"
+} else {
+    for (var i = 0; i < names.length; i++) {
+        var scoresList = document.createElement("li");
+        highscores.appendChild(scoresList);
+    
+        scoresList.textContent = names[i];
+    };
+}
+}
 
-// buttonsSection.addEventListener("click", function () {
-//     console.log("hello");
-// }, false);
-
+// if you click go back, go to index.html, restart quiz
 goBack.addEventListener("click", function() {
     console.log("Hello");
-    var backButton = document.createElement("a");
-    backButton.setAttribute("href", "index.html");
-    goBack.appendChild(backButton);
+    document.location.href = "./index.html"
+});
+
+// clears local storage
+clearButton.addEventListener("click", function() {
+    console.log("Hello");
+    localStorage.clear();
+    getLocalStorage();
 });
    
 
-
-
-// var savedHighscores = JSON.parse(localStorage.getItem("names"));
 

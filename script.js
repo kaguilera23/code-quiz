@@ -18,10 +18,10 @@ startButtonSection.appendChild(startButton);
 // When the user clicks to start the quiz
 startButtonSection.addEventListener("click", startQuiz)
 
-function startQuiz() {
+function startQuiz(event) {
+    event.stopPropagation();
 
 // Establishes Timer for Quiz
-
 function timer() {
     var timerInterval = setInterval(function(){
         timeSection.textContent = timeLeft + " seconds";
@@ -31,7 +31,6 @@ function timer() {
         }
 
         timeLeft--;
-
     }, 1000)
 }
 
@@ -216,6 +215,7 @@ function endScore() {
     instructions.textContent = "Your final score is " + timeLeft;
     mcButtonsSection.remove();
 
+    // create a place for user to input initials
     var enterInitialsText = document.createElement("div");
     var enterInitialsBox = document.createElement("input");
     var submitButton = document.createElement("button");
@@ -229,8 +229,6 @@ function endScore() {
     inputSection.appendChild(enterInitialsText);
     inputSection.appendChild(enterInitialsBox);
     inputSection.appendChild(submitButton);
-
-    
     
     inputSection.addEventListener("keypress", clickSubmit);
     inputSection.addEventListener("click", submitInitials);
@@ -265,13 +263,14 @@ function endScore() {
         }
 
         var previousNames = JSON.parse(localStorage.getItem("name"));
-        previousNames.push(userInitials);
+        previousNames.push(userInitials + " : " + timeLeft);
         
         localStorage.setItem("name", JSON.stringify(previousNames));
 
         thanksSection.textContent = "Thanks for playing " + userInitials + "! You will be redirected soon :)"
 
-        var wait = 5
+        // wait 3 seconds before redirecting to highscores page
+        var wait = 3
         
         setInterval(function() {
             wait--;
